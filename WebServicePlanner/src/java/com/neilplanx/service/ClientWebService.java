@@ -5,6 +5,8 @@
  */
 package com.neilplanx.service;
 
+import DTO.*;
+import DTO.Reply.LoginReplyDTO;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -23,4 +25,14 @@ public class ClientWebService {
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
     }
+    
+    @WebMethod(operationName = "login")
+    public LoginReplyDTO login(@WebParam(name = "LoginDTO") LoginDTO loginDTO) {
+        
+        LoginReplyDTO loginReply = new LoginReplyDTO();
+        loginReply.setLoginMessage("" + loginDTO.userName);
+        
+        return loginReply;
+    }
+    
 }
